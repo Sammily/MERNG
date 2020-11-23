@@ -24,9 +24,14 @@ input RegisterInput {
 }
   type Query {     #описываем "корневой тип" Query
     getPosts: [Post]    #объявляем что ожидаем поле getPosts типа Post
+    getPost(postId: ID!): Post
+  
   }
+
   type Mutation {
       register(registerInput: RegisterInput) : User!
       login(username: String!, password: String!): User!
+      createPost(body: String!): Post!
+      deletePost(postId: ID!): String!
   }
 `;
