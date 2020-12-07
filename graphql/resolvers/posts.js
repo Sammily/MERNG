@@ -1,6 +1,5 @@
 //распознаватель - resolvers - говорит где и как получить данные соотвествующие запрашиваемому полю
 const { AuthenticationError, UserInputError } = require('apollo-server');
-const { argsToArgsConfig } = require('graphql/type/definition');
 const Post = require('../../models/Post');
 const checkAuth = require('../../util/check-auth');
 module.exports = {
@@ -32,7 +31,7 @@ module.exports = {
     async createPost(_, { body }, context) {
       const user = checkAuth(context);
 
-      if (args.body.trim() === '') {
+      if (body.trim() === '') {
         throw new Error('Post body must not be empty');
       }
 
